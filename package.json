@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "description": "A client implementation for postMessage communication",
   "main": "dist/index.js",
-  "jsnext:main": "src/index.js",
+  "jsnext:main": "src/lib/Client.js",
   "scripts": {
-    "build": "babel src -d dist && browserify -t babelify ./src/index.js -o ./dist/browser.js",
-    "watch": "babel --watch src -d dist",
+    "build": "npm run babel && npm run browserify",
+    "watch": "npm run babel --watch",
     "test": "babel-tape-runner spec/*.spec.js",
-    "test-ie": "browserify -d -t babelify ./spec/browser.js | tape-run --browser=ie | tap-spec",
+    "test-browser": "browserify -d -t babelify ./spec/browser.js | tape-run",
+    "browserify": "browserify -t babelify ./src/index.js -o ./dist/browser.js",
+    "babel": "babel src -d dist",
     "prepublish": "npm run build"
   },
   "repository": {
