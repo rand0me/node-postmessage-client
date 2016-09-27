@@ -1,0 +1,8 @@
+# Build directory
+dist
+
+# Node modules
+node_modules
+
+# Web Storm
+.idea

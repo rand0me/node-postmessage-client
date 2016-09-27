@@ -1,0 +1,41 @@
+{
+  "name": "postmessage-client",
+  "version": "0.0.0",
+  "description": "A client implementation for postMessage communication",
+  "main": "dist/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "build": "babel src -d dist && browserify -t babelify ./src/index.js -o ./dist/browser.js",
+    "watch": "babel --watch src -d dist",
+    "test": "babel-tape-runner spec/*.spec.js",
+    "test-ie": "browserify -d -t babelify ./spec/browser.js | tape-run --browser=ie | tap-spec",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rand0me/node-postmessage-client.git"
+  },
+  "keywords": [
+    "postmessage"
+  ],
+  "author": "rand0me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rand0me/node-postmessage-client/issues"
+  },
+  "homepage": "https://github.com/rand0me/node-postmessage-client#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-tape-runner": "^2.0.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "tape-run": "^2.1.4",
+    "yuicompressor": "^2.4.8"
+  },
+  "dependencies": {
+    "native-promise-only": "^0.8.1"
+  }
+}
