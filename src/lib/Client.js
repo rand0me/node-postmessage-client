@@ -72,7 +72,7 @@ export default class Client {
         const data = JSON.parse(e.data);
 
         // Ignore messages without path
-        if (!data.path) {
+        if (!data.path || !data.response) {
             return;
         }
 
