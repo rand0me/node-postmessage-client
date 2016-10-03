@@ -1,6 +1,6 @@
-postmessage-client ![travis-image]
-==================================
-![npm-image]
+postmessage-client [![Build Status]](https://travis-ci.org/rand0me/node-postmessage-client)
+==========================================
+[![NPM]](https://nodei.co/npm/postmessage-client/)
 
 ## Installation
 ```
@@ -34,5 +34,6 @@ client.get('test/route').then(function (data) {
 });
 ```
 
-[npm-image]: https://nodei.co/npm/postmessage-client.png
-[travis-image]: https://travis-ci.org/rand0me/node-postmessage-client.svg?branch=master
+[npm]:
+[Build Status]: https://travis-ci.org/rand0me/node-postmessage-client.svg?branch=master
+[NPM]: https://nodei.co/npm/postmessage-client.png
