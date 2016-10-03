@@ -29,6 +29,8 @@ export default class Client {
         this.remoteWindow = remoteWindow;
 
         this.window.addEventListener('message', this.boundListener = data => this.listener(data));
+
+        return this;
     }
 
     /**
@@ -72,7 +74,7 @@ export default class Client {
         const data = JSON.parse(e.data);
 
         // Ignore messages without path
-        if (!data.path || !data.response) {
+        if (!data.path || data.type !== 'RESPONSE') {
             return;
         }
 

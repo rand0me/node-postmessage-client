@@ -34,6 +34,5 @@ client.get('test/route').then(function (data) {
 });
 ```
 
-[npm]:
 [Build Status]: https://travis-ci.org/rand0me/node-postmessage-client.svg?branch=master
 [NPM]: https://nodei.co/npm/postmessage-client.png

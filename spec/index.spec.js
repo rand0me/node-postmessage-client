@@ -17,15 +17,15 @@ tape('main', (t) => {
 
         const data = JSON.parse(e.data);
         data.message = 'OK';
+        data.type = 'RESPONSE';
 
         thisWindow.postMessage(JSON.stringify(data));
     });
 
     const client = new Client();
 
-    client.connect(thisWindow, hostWindow);
-    client.get('test/route', {id: '1'}).then(data => {
-        t.pass(`Message: ${data.message}`);
-    })
+    client.connect(thisWindow, hostWindow)
+        .get('test/route', {id: '1'})
+        .then(data => t.pass(`Message: ${data.message}`))
         .catch(err => console.error(err));
 });
