@@ -3,26 +3,30 @@ import tape from 'tape';
 import Client from '../src/lib/Client';
 
 tape('browser', (t) => {
+    t.plan(4);
 
     t.equal(typeof Client, 'function', 'Client is a constructor');
     t.ok(new Client() instanceof Client, 'Constructor works');
 
     window.addEventListener('message', (e) => {
+        const data = JSON.parse(e.data);
+
+        if (data.type === 'RESPONSE') {
+            return;
+        }
+
         t.pass('host window received message');
 
-        const data = JSON.parse(e.data);
         data.message = 'OK';
+        data.type = 'RESPONSE';
 
-        window.postMessage(JSON.stringify(data), '*');
+        e.source.postMessage(JSON.stringify(data), '*');
     });
 
     const client = new Client();
 
-    client.connect(window, window);
-    client.get('test/route', {id: '1'}).then(data => {
-        t.pass(`Message: ${data.message}`);
-        t.end();
-    }).catch(err => {
-        console.error(err);
-    });
+    client.connect(window, window)
+        .get('test/route', {id: '1'})
+        .then(data => t.pass(`Message: ${data.message}`))
+        .catch(err => console.error(err));
 });
