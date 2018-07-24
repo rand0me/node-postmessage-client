@@ -1,5 +1,8 @@
 postmessage-client [![Build Status]](https://travis-ci.org/rand0me/node-postmessage-client)
 ==========================================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/rand0me/node-postmessage-client.svg)](https://greenkeeper.io/)
+
 [![NPM]](https://nodei.co/npm/postmessage-client/)
 
 ## Installation
